@@ -1,0 +1,18 @@
+<suite name="suite of suites">
+    <suite-files >
+        <suite-file path="surveyJourney.xml" />
+        <suite-file path="contacts.xml" />
+        <suite-file path="settings.xml" />
+        <suite-file path="TicketResponseTriggeredAutomationTest.xml"/>
+        <suite-file path="buildModule.xml" />
+        <suite-file path="reportModuleSuite.xml" />
+        <suite-file path="TicketsOnSSPTest.xml"/>
+        <suite-file path="HubSpotAutomation.xml"/>
+        <suite-file path="SetGoal.xml"/>
+        <suite-file path="Dashboard.xml"/>
+        <suite-file path="CarryForward.xml"/>
+        <suite-file path="Automation.xml"/>
+        <suite-file path="Crosstab.xml"/>
+        <suite-file path="TextAnalytics.xml"/>
+    </suite-files>
+</suite>
