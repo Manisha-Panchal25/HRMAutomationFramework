@@ -1,5 +1,7 @@
 <suite name="suite of suites">
     <suite-files >
         <suite-file path="Login.xml" />
+        <suite-file path="LoginNegative.xml"/>
+        <suite-file path="LeaveTest.xml"/>
     </suite-files>
 </suite>
