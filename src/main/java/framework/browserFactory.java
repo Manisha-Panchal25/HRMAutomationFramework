@@ -186,18 +186,20 @@ public class browserFactory {
 	    options.addArguments("--disable-extensions");
 	    options.addArguments("--disable-dev-shm-usage");
 
-	    // IMPORTANT
+	    // FIX WINDOW SIZE
 	    options.addArguments("--window-size=1920,1080");
-	    options.addArguments("--start-maximized");
 
-	    // For Jenkins headless execution
+	    // FIX WINDOWS SCALING ISSUE
+	    options.addArguments("--force-device-scale-factor=1");
+	    options.addArguments("--high-dpi-support=1");
+
+	    // REQUIRED FOR WINDOWS HEADLESS
+	    options.addArguments("--disable-gpu");
+
+	    // HEADLESS MODE
 	    if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) {
 
 	        options.addArguments("--headless=new");
-
-	        // important for scaling issue
-	        options.addArguments("--force-device-scale-factor=1");
-	        options.addArguments("--high-dpi-support=1");
 	    }
 
 	    options.setExperimentalOption("prefs", prefs);
@@ -207,11 +209,13 @@ public class browserFactory {
 
 	    WebDriver driver = new ChromeDriver(options);
 
-	    // FORCE browser size
-	    driver.manage().window().maximize();
-
+	    // FORCE SIZE
 	    driver.manage().window().setSize(
 	            new org.openqa.selenium.Dimension(1920, 1080));
+
+	    // VERIFY SIZE IN JENKINS LOG
+	    System.out.println("Browser Size : "
+	            + driver.manage().window().getSize());
 
 	    return driver;
 	}
