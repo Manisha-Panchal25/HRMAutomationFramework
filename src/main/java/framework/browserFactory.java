@@ -167,55 +167,46 @@ public class browserFactory {
 	    System.setProperty("webdriver.chrome.logfile",
 	            System.getProperty("user.dir") + File.separator + "chromedriver.log");
 
-	    System.setProperty("webdriver.chrome.verboseLogging", "true");
+	    ChromeOptions options = new ChromeOptions();
 
-	    Map<String, Object> prefs = new HashMap<String, Object>();
+	    Map<String, Object> prefs = new HashMap<>();
 
 	    prefs.put("download.default_directory",
 	            System.getProperty("user.dir") + File.separator + "target");
 
-	    prefs.put("profile.content_settings.exceptions.clipboard",
-	            getClipBoardSettingsMap(1));
-
 	    prefs.put("profile.default_content_setting_values.notifications", 1);
-
-	    ChromeOptions options = new ChromeOptions();
-
-	    options.addArguments("--lang=en");
-	    options.addArguments("--no-sandbox");
-	    options.addArguments("--disable-extensions");
-	    options.addArguments("--disable-dev-shm-usage");
-
-	    // FIX WINDOW SIZE
-	    options.addArguments("--window-size=1920,1080");
-
-	    // FIX WINDOWS SCALING ISSUE
-	    options.addArguments("--force-device-scale-factor=1");
-	    options.addArguments("--high-dpi-support=1");
-
-	    // REQUIRED FOR WINDOWS HEADLESS
-	    options.addArguments("--disable-gpu");
-
-	    // HEADLESS MODE
-	    if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) {
-
-	        options.addArguments("--headless=new");
-	    }
 
 	    options.setExperimentalOption("prefs", prefs);
 
+	    // Browser arguments
+	    options.addArguments("--disable-dev-shm-usage");
+	    options.addArguments("--no-sandbox");
+	    options.addArguments("--disable-extensions");
+
+	    // VERY IMPORTANT FOR WINDOWS JENKINS
+	    options.addArguments("--window-size=1920,1080");
+
+	    // Fix DPI scaling issue
+	    options.addArguments("--force-device-scale-factor=1");
+	    options.addArguments("--high-dpi-support=1");
+
+	    // Headless
+	    if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) {
+
+	        // OLD headless works better on Jenkins Windows
+	        options.addArguments("--headless");
+
+	        // DO NOT USE headless=new
+	        // options.addArguments("--headless=new");
+	    }
+
 	    System.out.println("Browser options enabled");
-	    System.out.println(options.getCapabilityNames());
 
 	    WebDriver driver = new ChromeDriver(options);
 
-	    // FORCE SIZE
+	    // force size again after launch
 	    driver.manage().window().setSize(
 	            new org.openqa.selenium.Dimension(1920, 1080));
-
-	    // VERIFY SIZE IN JENKINS LOG
-	    System.out.println("Browser Size : "
-	            + driver.manage().window().getSize());
 
 	    return driver;
 	}
