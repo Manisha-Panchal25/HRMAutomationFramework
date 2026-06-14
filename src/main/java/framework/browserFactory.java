@@ -159,6 +159,7 @@ public class browserFactory {
 //		System.out.println(options.getCapabilityNames());
 //		return new ChromeDriver(options);
 //	}
+	
 	private static WebDriver getChromeDriver(String driverpath) {
 
 	    WebDriverManager.chromedriver().setup();
@@ -189,7 +190,8 @@ public class browserFactory {
 
 	        options.addArguments("--headless=new");
 	        options.addArguments("--window-size=1920,1080");
-	        options.addArguments("--start-maximized");
+	        options.addArguments("--force-device-scale-factor=1");
+//	        options.addArguments("--start-maximized");
 	    }
 
 	    options.setExperimentalOption("prefs", prefs);
@@ -198,8 +200,12 @@ public class browserFactory {
 
 	    System.out.println("Browser options enabled");
 	    System.out.println(options.getCapabilityNames());
+	    WebDriver driver = new ChromeDriver(options);
 
-	    return new ChromeDriver(options);
+	    driver.manage().window().maximize();
+
+	    return driver;
+//	    return new ChromeDriver(options);
 	}
 
 	private static WebDriver getInternetExplorerDriver(String driverpath) {
