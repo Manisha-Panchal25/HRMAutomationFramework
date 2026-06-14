@@ -1,0 +1,6 @@
+target/
+test-output/
+TestReport/
+*.log
+*.class
+chromedriver.exe

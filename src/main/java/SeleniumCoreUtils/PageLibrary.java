@@ -44,27 +44,27 @@ public class PageLibrary extends seleniumCore {
      */
 
     public void highlightElement(WebElement element) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        js.executeScript("arguments[0].style.border='3px solid green'", element);
-
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        try{
+        	JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border='3px solid green'", element);
+        } catch (StaleElementReferenceException e) {
+        	logMessage("⚠ [Stale Element Exception!!] : Refinding the element after 5 seconds" + element);
+        	holdExecution(5000);
+        	JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border='3px solid green'", element);
         }
     }
     public void removehighlightElement(WebElement element)
     {
+    	try {
     	JavascriptExecutor js = (JavascriptExecutor) driver;
-
     	js.executeScript("arguments[0].style.border=''", element);
-
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            
+        } catch (StaleElementReferenceException e) {
+        	logMessage("⚠ [Stale Element Exception!!] : Refinding the element after 5 seconds" + element);
+        	holdExecution(5000);
+        	JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border=''", element);
         }  
     }
     public WebElement finder(By locator) {

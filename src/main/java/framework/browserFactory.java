@@ -5,6 +5,7 @@
 package framework;
 
 import static helperUtils.ConfigPropertyReader.getProperty;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -133,30 +134,71 @@ public class browserFactory {
 		return driver;
 	}
 
+//	private static WebDriver getChromeDriver(String driverpath) {
+//		System.setProperty("webdriver.chrome.driver", driverpath);
+//		System.setProperty("webdriver.chrome.logfile", System.getProperty("user.dir") + File.separator + "chromedriver.log");
+//		System.setProperty("webdriver.chrome.verboseLogging", "true");
+//		Map<String, Object> prefs = new HashMap<String, Object>();
+//		prefs.put("download.default_directory", System.getProperty("user.dir") + File.separator + "target");
+//		prefs.put("profile.content_settings.exceptions.clipboard", getClipBoardSettingsMap(1));
+//		prefs.put("profile.default_content_setting_values.notifications", 1);
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--lang=en");  
+//		options.addArguments("--no-sandbox");
+//		options.addArguments("--disable-extensions");
+//		options.addArguments("test-type");
+//		if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) { // specially for linux graphicless
+//																			// environments
+//			options.addArguments("--headless");
+//			options.addArguments("--window-size=1920,1080");
+//		}
+//
+//		options.setExperimentalOption("prefs", prefs);
+//		options.addArguments("--disable-dev-shm-usage");
+//		System.out.println("Browser options enabled");
+//		System.out.println(options.getCapabilityNames());
+//		return new ChromeDriver(options);
+//	}
 	private static WebDriver getChromeDriver(String driverpath) {
-		System.setProperty("webdriver.chrome.driver", driverpath);
-		System.setProperty("webdriver.chrome.logfile", System.getProperty("user.dir") + File.separator + "chromedriver.log");
-		System.setProperty("webdriver.chrome.verboseLogging", "true");
-		Map<String, Object> prefs = new HashMap<String, Object>();
-		prefs.put("download.default_directory", System.getProperty("user.dir") + File.separator + "target");
-		prefs.put("profile.content_settings.exceptions.clipboard", getClipBoardSettingsMap(1));
-		prefs.put("profile.default_content_setting_values.notifications", 1);
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--lang=en");  
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-extensions");
-		options.addArguments("test-type");
-		if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) { // specially for linux graphicless
-																			// environments
-			options.addArguments("--headless");
-			options.addArguments("--window-size=1920,1080");
-		}
 
-		options.setExperimentalOption("prefs", prefs);
-		options.addArguments("--disable-dev-shm-usage");
-		System.out.println("Browser options enabled");
-		System.out.println(options.getCapabilityNames());
-		return new ChromeDriver(options);
+	    WebDriverManager.chromedriver().setup();
+
+	    System.setProperty("webdriver.chrome.logfile",
+	            System.getProperty("user.dir") + File.separator + "chromedriver.log");
+
+	    System.setProperty("webdriver.chrome.verboseLogging", "true");
+
+	    Map<String, Object> prefs = new HashMap<String, Object>();
+
+	    prefs.put("download.default_directory",
+	            System.getProperty("user.dir") + File.separator + "target");
+
+	    prefs.put("profile.content_settings.exceptions.clipboard",
+	            getClipBoardSettingsMap(1));
+
+	    prefs.put("profile.default_content_setting_values.notifications", 1);
+
+	    ChromeOptions options = new ChromeOptions();
+
+	    options.addArguments("--lang=en");
+	    options.addArguments("--no-sandbox");
+	    options.addArguments("--disable-extensions");
+	    options.addArguments("test-type");
+
+	    if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) {
+
+	        options.addArguments("--headless=new");
+	        options.addArguments("--window-size=1920,1080");
+	    }
+
+	    options.setExperimentalOption("prefs", prefs);
+
+	    options.addArguments("--disable-dev-shm-usage");
+
+	    System.out.println("Browser options enabled");
+	    System.out.println(options.getCapabilityNames());
+
+	    return new ChromeDriver(options);
 	}
 
 	private static WebDriver getInternetExplorerDriver(String driverpath) {

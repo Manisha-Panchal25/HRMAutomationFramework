@@ -23,5 +23,21 @@ public class LeavePageObjects {
    public By leaveStatus=By.xpath("//div[contains(@class,'oxd-table-cell')]//div[text()='Added']");
    public By entitlementsDays=By.xpath("//div[contains(@class,'oxd-table-cell')]//div[text()='10']");
    public By myEntitlements=By.xpath("//a[text()='My Entitlements']");
-   public By leaveTypeInput=By.xpath("//div[text()='-- Select --']");
-}
+   public By leaveTypeInput=By.xpath("//label[text()='Leave Type']/../../../..//div[text()='-- Select --']/../..");
+   public By searchBtn=By.xpath("//button[text()=' Search ']");
+   public By totalDays=By.xpath("//span[text()='Total 10.00 Day(s)']");
+   public By ApplyNav=By.xpath("//a[text()='Apply']");
+   public By leaveBalance=By.xpath("//label[text()='Leave Balance']/../../..//p[text()='10.00 Day(s)']");
+   public By fromDateInput=By.xpath("//label[text()='From Date']/../../..//input[@placeholder='yyyy-dd-mm']");
+   public By todayBtn=By.xpath("//div[@class='oxd-date-input-link' and text()='Today']");
+   public By toDateInput=By.xpath("//label[text()='To Date']/../../..//input[@placeholder='yyyy-dd-mm']");
+   public By duration=By.xpath("//div[text()='Full Day']");
+   public By comments=By.xpath("//label[text()='Comments']/../..//textarea");
+   public By applybtn=By.xpath("//button[text()=' Apply ']");
+   public By myLeaveNav=By.xpath("//a[text()='My Leave']");
+   public By LeaveRecord=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='Have some work']]");
+   public By cancelBtn=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='have some work']]//button[contains(., 'Cancel')]");
+   public By deleteBtn=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='CAN - Vacation']]//button[i[contains(@class, 'bi-trash')]]");
+   public By confirmDelete=By.xpath("//button[text()=' Yes, Delete ']");
+};
+

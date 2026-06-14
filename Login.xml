@@ -1,4 +1,5 @@
-<suite name="Test Suite">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="HRM Automation Suite">
   <test name="Login Test">
     <classes>
       <class name="tests.LoginTest"/>
