@@ -184,30 +184,37 @@ public class browserFactory {
 	    options.addArguments("--lang=en");
 	    options.addArguments("--no-sandbox");
 	    options.addArguments("--disable-extensions");
-	    options.addArguments("test-type");
+	    options.addArguments("--disable-dev-shm-usage");
 
+	    // IMPORTANT
+	    options.addArguments("--window-size=1920,1080");
+	    options.addArguments("--start-maximized");
+
+	    // For Jenkins headless execution
 	    if (System.getProperty("headless", "no").equalsIgnoreCase("yes")) {
 
 	        options.addArguments("--headless=new");
-	        options.addArguments("--window-size=1920,1080");
+
+	        // important for scaling issue
 	        options.addArguments("--force-device-scale-factor=1");
-//	        options.addArguments("--start-maximized");
+	        options.addArguments("--high-dpi-support=1");
 	    }
 
 	    options.setExperimentalOption("prefs", prefs);
 
-	    options.addArguments("--disable-dev-shm-usage");
-
 	    System.out.println("Browser options enabled");
 	    System.out.println(options.getCapabilityNames());
+
 	    WebDriver driver = new ChromeDriver(options);
 
+	    // FORCE browser size
 	    driver.manage().window().maximize();
 
-	    return driver;
-//	    return new ChromeDriver(options);
-	}
+	    driver.manage().window().setSize(
+	            new org.openqa.selenium.Dimension(1920, 1080));
 
+	    return driver;
+	}
 	private static WebDriver getInternetExplorerDriver(String driverpath) {
 		System.setProperty("webdriver.ie.driver", driverpath);
 		InternetExplorerOptions options = new InternetExplorerOptions();
