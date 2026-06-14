@@ -1,7 +1,11 @@
-<suite name="suite of suites">
-    <suite-files >
-        <suite-file path="Login.xml" />
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite of Suites" parallel="false">
+
+    <suite-files>
+        <suite-file path="Login.xml"/>
         <suite-file path="LoginNegative.xml"/>
         <suite-file path="LeaveTest.xml"/>
     </suite-files>
+
 </suite>
