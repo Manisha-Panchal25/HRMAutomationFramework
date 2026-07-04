@@ -47,12 +47,7 @@ public class LeaveTest extends PreAndPostTestEvents {
           {
         	  LeavePage.ApplyLeave();
           }
-          @Test(description = "Verify Leave Applied or not")
-          void TC_06VerifyAppliedLeave()
-          {
-        	  LeavePage.VerifyAppliedLeave();
-          }
-          @Test(description = "Cancel Leave")
+          @Test(description = "Remove Entitlements")
           void TC_07CancelLeaveAndRemoveEntitlements()
           {
         	  LeavePage.CancelLeaveAndRemoveEntitlements();

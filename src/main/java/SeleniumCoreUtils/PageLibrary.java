@@ -166,6 +166,18 @@ public class PageLibrary extends seleniumCore {
       logMessage("✔ ASSERT PASSED: element " + elementName.getText()
               + " is visible and Text is " + expectedValue);
   }
+  public void verifyElementAttributeNotContains(By locator, String attribute, String expectedValue){
+	  WebElement elementName = findFreshElement(locator);
+	  
+//      wait.waitForElementToBeVisible(elementName);  
+      String actualValue = elementName.getAttribute(attribute);
+      logMessage("Expected value: "+expectedValue);
+      logMessage("Actual value: "+actualValue);
+      Assert.assertFalse(actualValue
+              .trim().toUpperCase().contains(expectedValue.toUpperCase()));
+      logMessage("✔ ASSERT PASSED: element " + elementName.getText()
+              + " is visible and Text is " + expectedValue);
+  }
   
   public void verifyElementCssContains(By locator, String cssProperty, String expectedValue){
 	  WebElement elementName = findFreshElement(locator);

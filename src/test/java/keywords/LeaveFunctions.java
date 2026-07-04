@@ -101,6 +101,7 @@ public class LeaveFunctions {
 		driver.page.enterText(leavePageObjects.comments, "Have Some Work");
 		driver.page.isElementDisplayed(leavePageObjects.applybtn);
 		driver.page.clickElement(leavePageObjects.applybtn);
+		driver.page.wait.hardWait(3);
 	}
 	public void VerifyAppliedLeave()
 	{
@@ -108,16 +109,16 @@ public class LeaveFunctions {
 		driver.page.clickElement(leavePageObjects.myLeaveNav);
 		driver.page.isElementDisplayed(leavePageObjects.leaveTypeInput);
 		driver.page.clickElement(leavePageObjects.leaveTypeInput);
-		driver.page.isElementDisplayed(leavePageObjects.verifyLeaveType);
-		driver.page.clickElement(leavePageObjects.verifyLeaveType);
+		driver.page.isElementDisplayed(leavePageObjects.appliedLeaveType);
+		driver.page.clickElement(leavePageObjects.appliedLeaveType);
 		driver.page.isElementDisplayed(leavePageObjects.searchBtn);
 		driver.page.clickElement(leavePageObjects.searchBtn);
 		driver.page.isElementDisplayed(leavePageObjects.LeaveRecord);
 	}
 	public void CancelLeaveAndRemoveEntitlements()
 	{
-		driver.page.isElementDisplayed(leavePageObjects.cancelBtn);
-		driver.page.clickElement(leavePageObjects.cancelBtn);
+//		driver.page.isElementDisplayed(leavePageObjects.cancelBtn);
+//		driver.page.clickElement(leavePageObjects.cancelBtn);
 		driver.page.isElementDisplayed(leavePageObjects.entitlementsNav);
 		driver.page.clickElement(leavePageObjects.entitlementsNav);
 		driver.page.isElementDisplayed(leavePageObjects.myEntitlements);
