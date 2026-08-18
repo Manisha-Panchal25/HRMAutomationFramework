@@ -36,7 +36,7 @@ public class LeavePageObjects {
    public By applybtn=By.xpath("//button[text()=' Apply ']");
    public By myLeaveNav=By.xpath("//a[text()='My Leave']");
    public By LeaveRecord=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='Have some work']]");
-   public By cancelBtn=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='have some work']]//button[contains(., 'Cancel')]");
+   public By cancelBtn=By.xpath("//div[contains(@class,'oxd-table-card') and .//div[text()='CAN - Vacation']]//button[normalize-space()='Cancel']");
    public By deleteBtn=By.xpath("//div[contains(@class, 'oxd-table-card') and .//div[text()='CAN - Vacation']]//button[i[contains(@class, 'bi-trash')]]");
    public By confirmDelete=By.xpath("//button[text()=' Yes, Delete ']");
    public By appliedLeaveType=By.xpath("//div[@role='listbox']//div[contains(@class, 'oxd-select-option')][span[text()='CAN - Vacation']]");

@@ -48,7 +48,7 @@ public class LeaveTest extends PreAndPostTestEvents {
         	  LeavePage.ApplyLeave();
           }
           @Test(description = "Remove Entitlements")
-          void TC_07CancelLeaveAndRemoveEntitlements()
+          void TC_06CancelLeaveAndRemoveEntitlements()
           {
         	  LeavePage.CancelLeaveAndRemoveEntitlements();
           }

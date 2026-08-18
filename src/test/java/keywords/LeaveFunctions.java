@@ -117,8 +117,10 @@ public class LeaveFunctions {
 	}
 	public void CancelLeaveAndRemoveEntitlements()
 	{
-//		driver.page.isElementDisplayed(leavePageObjects.cancelBtn);
-//		driver.page.clickElement(leavePageObjects.cancelBtn);
+		driver.page.isElementDisplayed(leavePageObjects.myLeaveNav);
+		driver.page.clickElement(leavePageObjects.myLeaveNav);
+		driver.page.isElementDisplayed(leavePageObjects.cancelBtn);
+		driver.page.clickElement(leavePageObjects.cancelBtn);
 		driver.page.isElementDisplayed(leavePageObjects.entitlementsNav);
 		driver.page.clickElement(leavePageObjects.entitlementsNav);
 		driver.page.isElementDisplayed(leavePageObjects.myEntitlements);
